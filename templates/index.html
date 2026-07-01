@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KCDS AI Resume Screening System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar">
+      <a class="brand" href="#screening" aria-label="AI resume screening home">
+        <span>AI</span>
+        <strong>KCDS Resume Screening</strong>
+      </a>
+      <div class="nav-links">
+        <a href="#screening">Screen</a>
+        <a href="#roles">Roles</a>
+        <a href="#history">History</a>
+      </div>
+    </nav>
+    <section class="hero-layout">
+      <div class="hero-copy">
+        <p class="kicker">Flask + MongoDB AI screening project</p>
+        <h1>Rank resumes faster with skill matching, experience scoring and recruiter-ready decisions.</h1>
+        <p class="lead">Paste a resume, choose the job role, add required skills, and get match score, missing skills, strengths and recommendation instantly.</p>
+      </div>
+      <aside class="hero-card" id="modeCard">
+        <span>Screening engine</span>
+        <strong>Ready</strong>
+        <p>MongoDB stores every candidate screening. Demo fallback runs locally without database setup.</p>
+      </aside>
+    </section>
+  </header>
+
+  <main>
+    <section class="stats" id="stats"></section>
+
+    <section class="workspace" id="screening">
+      <form class="panel screening-form" id="screeningForm">
+        <div class="section-head">
+          <span>Candidate Screening</span>
+          <h2>Resume and Job Details</h2>
+        </div>
+        <div class="form-grid">
+          <label>Candidate Name<input name="candidateName" placeholder="Enter candidate name"></label>
+          <label>Email<input name="email" type="email" placeholder="candidate@email.com"></label>
+          <label>Phone<input name="phone" placeholder="10 digit mobile"></label>
+          <label>Job Role<select name="role">
+            {% for role in roles %}<option>{{ role }}</option>{% endfor %}
+          </select></label>
+          <label>Minimum Experience<input name="minExperience" type="number" min="0" max="20" value="1"></label>
+          <label>Extra Required Skills<input name="requiredSkills" placeholder="AWS, Docker, React"></label>
+        </div>
+        <label>Resume Text<textarea name="resumeText" id="resumeText" rows="10" required placeholder="Paste resume summary, skills, projects, education and experience here..."></textarea></label>
+        <div class="form-actions">
+          <label class="file-button">Upload TXT Resume<input id="resumeFile" type="file" accept=".txt,text/plain"></label>
+          <button type="submit">Screen Resume</button>
+        </div>
+        <p class="form-message" id="formMessage"></p>
+      </form>
+
+      <section class="panel result-panel">
+        <div class="section-head">
+          <span>AI Result</span>
+          <h2>Candidate Match</h2>
+        </div>
+        <div class="empty-result" id="emptyResult">
+          <strong>Paste a resume and screen.</strong>
+          <p>Score, decision, missing skills and recommendation will appear here.</p>
+        </div>
+        <article class="result-card hidden" id="resultCard">
+          <span class="decision" id="decision"></span>
+          <strong id="scoreValue"></strong>
+          <p id="recommendation"></p>
+          <div class="score-grid">
+            <span><small>Skill Score</small><b id="skillScore"></b></span>
+            <span><small>Keywords</small><b id="keywordScore"></b></span>
+            <span><small>Experience</small><b id="experienceScore"></b></span>
+          </div>
+          <div class="skill-block">
+            <h3>Matched Skills</h3>
+            <div class="chips" id="matchedSkills"></div>
+          </div>
+          <div class="skill-block">
+            <h3>Missing Skills</h3>
+            <div class="chips warning" id="missingSkills"></div>
+          </div>
+          <ul class="strengths" id="strengths"></ul>
+        </article>
+      </section>
+    </section>
+
+    <section class="panel roles" id="roles">
+      <div class="section-head row">
+        <div>
+          <span>Role Profiles</span>
+          <h2>Built-in Screening Templates</h2>
+        </div>
+        <input id="roleSearch" type="search" placeholder="Search role">
+      </div>
+      <div class="role-grid" id="roleGrid"></div>
+    </section>
+
+    <section class="panel history" id="history">
+      <div class="section-head row">
+        <div>
+          <span>MongoDB Records</span>
+          <h2>Recent Screenings</h2>
+        </div>
+        <input id="historySearch" type="search" placeholder="Search candidates">
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Candidate</th>
+              <th>Role</th>
+              <th>Score</th>
+              <th>Skills</th>
+              <th>Decision</th>
+            </tr>
+          </thead>
+          <tbody id="historyRows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

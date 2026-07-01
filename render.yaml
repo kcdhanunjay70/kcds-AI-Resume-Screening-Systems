@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: kcds-ai-resume-screening-systems
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: MONGO_URI
+        sync: false
+      - key: MONGO_DB_NAME
+        value: ai_resume_screening
