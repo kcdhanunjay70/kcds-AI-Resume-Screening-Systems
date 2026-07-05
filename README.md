@@ -1,19 +1,21 @@
-# KCDS AI Resume Screening Systems
+# TalentLens AI — Resume Screening System
 
-Excellent UI Flask + MongoDB project for screening resumes against job roles using skill matching, keyword scoring, experience detection and recruiter-ready recommendations.
+Animated Flask + MongoDB resume intelligence application that reads pasted text, PDF, DOCX and TXT resumes, classifies candidate profiles, and matches them against 32 software careers with salary insights.
 
 ## Features
 
-- Responsive HTML, CSS and JavaScript frontend.
-- Flask REST API with validation.
-- MongoDB screening history using `MONGO_URI`.
-- In-memory fallback when MongoDB is not configured.
-- Role templates for Python Developer, Data Analyst, ML Engineer, Frontend Developer and Full Stack Developer.
-- Match score, skill score, keyword score, experience score, matched skills, missing skills and hiring decision.
-- TXT resume upload helper in the browser.
-- Render deployment configuration and GitHub Actions CI.
+- Server-side PDF, Microsoft Word (`.docx`) and text extraction
+- Paste-to-analyze workflow with drag-and-drop upload
+- Resume classification: type, career level, primary domain, sections and word count
+- 32 software job profiles across development, data/AI, cloud, security, QA, design and IT
+- Required-skill matching, evidence keywords, experience and resume-quality scoring
+- Indian annual salary ranges and experience requirements for every role
+- Automatic role recommendations based on resume contents
+- MongoDB screening history with in-memory local fallback
+- Responsive animated UI with reduced-motion accessibility support
+- File validation and 8 MB upload limit
 
-## Local Setup
+## Local setup
 
 ```bash
 python -m venv .venv
@@ -24,27 +26,28 @@ python app.py
 
 Open `http://localhost:5000`.
 
-## Environment Variables
+## Environment variables
 
-- `MONGO_URI`: MongoDB Atlas or local MongoDB connection string.
-- `MONGO_DB_NAME`: database name, default `ai_resume_screening`.
-- `PORT`: server port, provided automatically by Render.
+- `MONGO_URI`: MongoDB Atlas or local connection string
+- `MONGO_DB_NAME`: defaults to `ai_resume_screening`
+- `PORT`: defaults to `5000`
 
-## API Endpoints
+Uploaded source documents are processed in memory. The application stores the screening result and a short text preview, not the original file.
+
+## API
 
 - `GET /api/health`
 - `GET /api/metadata`
 - `GET /api/stats`
 - `GET /api/screenings`
+- `POST /api/resume/extract` — multipart field `resume`
 - `POST /api/screen`
 - `DELETE /api/screenings/<id>`
-
-## Deploy on Render
-
-Use `render.yaml`, connect this GitHub repository, and set `MONGO_URI` in Render environment variables.
 
 ## Tests
 
 ```bash
 pytest -q
 ```
+
+The test suite covers scoring, job metadata, salary data, TXT/DOCX extraction and file validation.
