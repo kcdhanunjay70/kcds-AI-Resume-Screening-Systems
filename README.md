@@ -17,14 +17,28 @@ Animated Flask + MongoDB resume intelligence application that reads pasted text,
 
 ## Local setup
 
+### Recommended on Windows
+
+Double-click `setup.bat` once, then use `run.bat` whenever you want to start the application. These scripts create an isolated `.venv`, install every required package, and avoid global Python package conflicts.
+
+### Manual setup
+
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 python app.py
 ```
 
 Open `http://localhost:5000`.
+
+If `ModuleNotFoundError` appears, the dependencies were installed into a different Python environment. Run:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+Using `python -m pip` ensures pip installs into the same Python used by `python app.py`.
 
 ## Environment variables
 

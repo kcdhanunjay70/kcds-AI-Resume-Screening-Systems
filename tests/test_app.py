@@ -15,6 +15,7 @@ def test_health_endpoint():
     payload = response.get_json()
     assert response.status_code == 200
     assert payload["success"] is True
+    assert payload["documentSupport"] == {"pdf": True, "docx": True, "txt": True}
 
 
 def test_metadata_endpoint_lists_roles():

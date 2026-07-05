@@ -6,11 +6,19 @@ from datetime import datetime, timezone
 from uuid import uuid4
 
 from bson import ObjectId
-from docx import Document
 from flask import Flask, jsonify, render_template, request
-from pypdf import PdfReader
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
+
+try:
+    from docx import Document
+except ImportError:
+    Document = None
+
+try:
+    from pypdf import PdfReader
+except ImportError:
+    PdfReader = None
 
 
 def job(job_id, title, category, skills, keywords, salary_min, salary_max, experience, level="Mid Level"):
@@ -108,8 +116,12 @@ def extract_resume(file_storage):
         raise ValueError("Resume file must be 8 MB or smaller")
     try:
         if extension == ".pdf":
+            if PdfReader is None:
+                raise ValueError("PDF support is not installed. Run: python -m pip install -r requirements.txt")
             text = "\n".join(page.extract_text() or "" for page in PdfReader(io.BytesIO(content)).pages)
         elif extension == ".docx":
+            if Document is None:
+                raise ValueError("Word support is not installed. Run: python -m pip install -r requirements.txt")
             document = Document(io.BytesIO(content))
             text = "\n".join([p.text for p in document.paragraphs] + [" | ".join(cell.text for cell in row.cells) for table in document.tables for row in table.rows])
         else:
@@ -277,7 +289,10 @@ def create_app():
 
     @app.get("/api/health")
     def health():
-        return jsonify({"success": True, "status": "ok", "storeMode": store.mode})
+        return jsonify({
+            "success": True, "status": "ok", "storeMode": store.mode,
+            "documentSupport": {"pdf": PdfReader is not None, "docx": Document is not None, "txt": True},
+        })
 
     @app.get("/api/metadata")
     def metadata():
