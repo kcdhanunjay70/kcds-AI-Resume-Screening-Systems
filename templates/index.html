@@ -1,10 +1,10 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="AI resume screening with PDF and Word extraction, 32 software jobs, salary insights and MongoDB history.">
-  <title>TalentLens AI — Resume Intelligence</title>
+  <title>TalentLens AI â€” Resume Intelligence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
   <header class="topbar">
     <a class="brand" href="#"><span class="logo">TL</span><span>TalentLens <b>AI</b></span></a>
     <nav><a href="#screen">Screen resume</a><a href="#jobs">Jobs</a><a href="#history">History</a></nav>
-    <a class="nav-cta" href="#screen">Start screening <span>→</span></a>
+    <a class="nav-cta" href="#screen">Start screening <span>â†’</span></a>
   </header>
 
   <main>
@@ -23,9 +23,9 @@
       <div class="hero-copy">
         <div class="eyebrow"><i></i> Resume intelligence for modern hiring</div>
         <h1>Find the right role.<br><span>Prove the right skills.</span></h1>
-        <p>Upload a PDF or Word resume—or paste text—to instantly classify experience, match skills across 32 software careers, and see realistic salary bands.</p>
-        <div class="hero-actions"><a class="primary" href="#screen">Analyze my resume <span>↗</span></a><a class="secondary" href="#jobs">Explore 32 roles</a></div>
-        <div class="trust-row"><span>✓ PDF & DOCX parsing</span><span>✓ MongoDB history</span><span>✓ Salary intelligence</span></div>
+        <p>Upload a PDF or Word resumeâ€”or paste textâ€”to instantly classify experience, match skills across 32 software careers, and see realistic salary bands.</p>
+        <div class="hero-actions"><a class="primary" href="#screen">Analyze my resume <span>â†—</span></a><a class="secondary" href="#jobs">Explore 32 roles</a></div>
+        <div class="trust-row"><span>âœ“ PDF & DOCX parsing</span><span>âœ“ MongoDB history</span><span>âœ“ Salary intelligence</span></div>
       </div>
       <div class="hero-visual">
         <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
@@ -36,8 +36,8 @@
           <div class="progress"><i style="width:92%"></i></div>
           <footer><span>Recommended</span><strong>Full Stack Developer</strong></footer>
         </article>
-        <article class="float-card salary-card"><span>Salary fit</span><strong>₹8L – ₹19L</strong><small>Based on role & experience</small></article>
-        <article class="float-card scan-card"><i>✓</i><div><strong>Resume scanned</strong><small>8 sections detected</small></div></article>
+        <article class="float-card salary-card"><span>Salary fit</span><strong>â‚¹8L â€“ â‚¹19L</strong><small>Based on role & experience</small></article>
+        <article class="float-card scan-card"><i>âœ“</i><div><strong>Resume scanned</strong><small>8 sections detected</small></div></article>
       </div>
     </section>
 
@@ -47,13 +47,13 @@
       <div class="section-title"><div><span class="overline">AI SCREENING STUDIO</span><h2>Turn any resume into a career signal.</h2></div><p>Upload your document or paste the content. Your file is read in memory and only the screening result is stored.</p></div>
       <div class="workspace">
         <form class="form-card" id="screeningForm">
-          <div class="step-title"><span>01</span><div><h3>Add your resume</h3><p>PDF, DOCX or TXT • maximum 8 MB</p></div></div>
+          <div class="step-title"><span>01</span><div><h3>Add your resume</h3><p>PDF, DOCX or TXT â€¢ maximum 8 MB</p></div></div>
           <label class="dropzone" id="dropzone">
             <input id="resumeFile" type="file" accept=".pdf,.docx,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain">
-            <span class="upload-icon">↥</span><strong>Drop your resume here</strong><p>or <u>browse from your computer</u></p><small id="fileStatus">PDF, Word and text files supported</small>
+            <span class="upload-icon">â†¥</span><strong>Drop your resume here</strong><p>or <u>browse from your computer</u></p><small id="fileStatus">PDF, Word and text files supported</small>
           </label>
           <div class="divider"><span>OR PASTE RESUME TEXT</span></div>
-          <label class="field full"><span>Resume content</span><textarea name="resumeText" id="resumeText" rows="8" required placeholder="Paste summary, skills, projects, education and experience…"></textarea></label>
+          <label class="field full"><span>Resume content</span><textarea name="resumeText" id="resumeText" rows="8" required placeholder="Paste summary, skills, projects, education and experienceâ€¦"></textarea></label>
           <div class="classification hidden" id="classification"></div>
           <div class="step-title second"><span>02</span><div><h3>Choose your target role</h3><p>We will compare skills, evidence and experience</p></div></div>
           <div class="form-grid">
@@ -64,13 +64,13 @@
             <label class="field full"><span>Extra required skills <em>optional</em></span><input name="requiredSkills" placeholder="e.g. AWS, Docker, GraphQL"></label>
           </div>
           <div class="selected-salary" id="selectedSalary"></div>
-          <button class="screen-button" type="submit"><span>Analyze resume</span><b>→</b></button>
+          <button class="screen-button" type="submit"><span>Analyze resume</span><b>â†’</b></button>
           <p class="form-message" id="formMessage"></p>
         </form>
 
         <aside class="result-panel">
           <div class="result-head"><div><span class="overline">LIVE ANALYSIS</span><h3>Your match report</h3></div><span class="pulse-dot"></span></div>
-          <div class="empty-result" id="emptyResult"><div class="empty-orb">✦</div><h3>Your insights will appear here</h3><p>Upload or paste a resume, select a target role and run the analysis.</p><div><span>Skills</span><span>Experience</span><span>Salary</span></div></div>
+          <div class="empty-result" id="emptyResult"><div class="empty-orb">âœ¦</div><h3>Your insights will appear here</h3><p>Upload or paste a resume, select a target role and run the analysis.</p><div><span>Skills</span><span>Experience</span><span>Salary</span></div></div>
           <article class="result-card hidden" id="resultCard">
             <div class="score-hero"><div class="score-dial" id="scoreDial"><strong id="scoreValue">0</strong><small>overall match</small></div><div><span class="decision" id="decision"></span><h3 id="resultRole"></h3><p id="recommendation"></p></div></div>
             <div class="salary-result"><span>Estimated salary range</span><strong id="salaryRange"></strong></div>
@@ -84,16 +84,32 @@
     </section>
 
     <section class="jobs-section reveal" id="jobs">
-      <div class="section-title"><div><span class="overline">CAREER LIBRARY</span><h2>32 software careers. One intelligent match.</h2></div><div class="job-tools"><input id="roleSearch" type="search" placeholder="Search role or skill…"><select id="categoryFilter"><option value="">All categories</option></select></div></div>
+      <div class="section-title"><div><span class="overline">CAREER LIBRARY</span><h2>32 software careers. One intelligent match.</h2></div><div class="job-tools"><input id="roleSearch" type="search" placeholder="Search role or skillâ€¦"><select id="categoryFilter"><option value="">All categories</option></select></div></div>
       <div class="role-grid" id="roleGrid"></div>
     </section>
 
     <section class="history-section reveal" id="history">
-      <div class="section-title"><div><span class="overline">MONGODB HISTORY</span><h2>Your recent screening intelligence.</h2></div><input id="historySearch" type="search" placeholder="Search candidate or role…"></div>
+      <div class="section-title"><div><span class="overline">MONGODB HISTORY</span><h2>Your recent screening intelligence.</h2></div><input id="historySearch" type="search" placeholder="Search candidate or roleâ€¦"></div>
       <div class="history-grid" id="historyRows"></div>
     </section>
   </main>
-  <footer class="footer"><div class="brand"><span class="logo">TL</span><span>TalentLens <b>AI</b></span></div><p>Smarter matching. Clearer career decisions.</p></footer>
   <script src="{{ url_for('static', filename='app.js') }}"></script>
+  <footer class="site-footer">
+    <div class="footer-banner">
+      <img src="{{ url_for('static', filename='Footer.png') }}" alt="Google Search - K.C.Dhanunjay Infosys special features, contact number, address and website" loading="lazy" decoding="async">
+    </div>
+    <div class="footer-contact">
+      <div>
+        <span class="footer-label">Training &amp; Project Support</span>
+        <h2>Google Search - K.C.Dhanunjay Infosys</h2>
+        <p>Expert faculty, practical training, certification, placement support and flexible batches.</p>
+      </div>
+      <div class="footer-actions">
+        <a href="https://wa.me/9494705353" target="_blank" rel="noopener">Call 9494705353</a>
+        <a href="https://kcdhanunjayinfosys.onrender.com/" target="_blank" rel="noopener">Visit Website</a>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 K.C.Dhanunjay Infosys</span><span>Near APSRTC Busstand, Above Friends Hotel, Guntakal - 515801</span></div>
+  </footer>
 </body>
 </html>
